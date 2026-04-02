@@ -63,27 +63,27 @@
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // Forces the script to wait for the video/styles to be ready
         window.addEventListener("load", function() {
-            
             let tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: "#main-sequence",
                     start: "top top",
-                    end: "+=200%", 
+                    end: "+=250%", 
                     pin: true,
-                    scrub: 1, // This makes the zoom follow your scroll exactly
+                    scrub: 1,
                     anticipatePin: 1
                 }
             });
 
-            // THE ZOOM SEQUENCE
-            tl.to(".left-t", { xPercent: -120, opacity: 0 }, 0)
-              .to(".right-t", { xPercent: 120, opacity: 0 }, 0)
+            // ZOOM TO NORMAL FULL VIDEO RATIO
+            tl.to(".left-t", { xPercent: -150, opacity: 0 }, 0)
+              .to(".right-t", { xPercent: 150, opacity: 0 }, 0)
               .to(".video-window", { 
-                width: "90vw", 
-                height: "85vh",
-                duration: 2 
+                width: "100vw",     // Full width
+                height: "56.25vw",  // Exact 16:9 ratio height
+                margin: "0",
+                duration: 2,
+                ease: "power2.inOut"
               }, 0)
               .to(".hero-panel", { yPercent: -100, duration: 1 });
         });
