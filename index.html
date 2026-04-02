@@ -75,13 +75,13 @@
                 }
             });
 
-            // ZOOM TO NORMAL FULL VIDEO RATIO
+            // THE HORIZONTAL EXPANSION
+            // We move the text away while the video width grows to its original cinematic ratio
             tl.to(".left-t", { xPercent: -150, opacity: 0 }, 0)
               .to(".right-t", { xPercent: 150, opacity: 0 }, 0)
               .to(".video-window", { 
-                width: "100vw",     // Full width
-                height: "56.25vw",  // Exact 16:9 ratio height
-                margin: "0",
+                width: "80vw",      // Expands horizontally to full cinematic width
+                height: "45vw",     // Locks to a 16:9 ratio (80 * 9 / 16)
                 duration: 2,
                 ease: "power2.inOut"
               }, 0)
