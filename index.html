@@ -3,76 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TYK.FILMS | VISUAL ARCHIVE</title>
+    <title>TYK.FILMS | AUREVIA EDIT</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
 
     <nav>
         <div class="logo">TYK.FILMS</div>
-        <div class="nav-links">
-            <a href="#">WORK</a>
-            <a href="#">ABOUT</a>
-            <a href="#">CONTACT</a>
-        </div>
+        <div class="nav-links"><a>WORK</a><a>ABOUT</a><a>CONTACT</a></div>
     </nav>
 
-    <section class="hero-split">
-        <div class="hero-text left reveal">
-            <h1>WHERE<br>VISION</h1>
-        </div>
+    <div id="main-sequence">
         
-        <div class="hero-video-container reveal">
-            <video autoplay muted loop playsinline>
-                <source src="your-video.mp4" type="video/mp4">
-            </video>
-        </div>
+        <section class="panel hero-panel">
+            <div class="hero-content">
+                <div class="text-wrap left-t"><h1>WHERE<br>VISION</h1></div>
+                
+                <div class="video-window">
+                    <video autoplay muted loop playsinline>
+                        <source src="your-video.mp4" type="video/mp4">
+                    </video>
+                </div>
 
-        <div class="hero-text right reveal">
-            <h1>MEETS<br>EXECUTION</h1>
-        </div>
+                <div class="text-wrap right-t"><h1>MEETS<br>EXECUTION</h1></div>
+            </div>
+        </section>
+
+        <section class="panel desc-panel">
+            <div class="desc-content">
+                <div class="box">
+                    <p>WE CRAFT DIGITAL EXPERIENCES AND IDENTITIES THAT DON'T JUST LOOK BEAUTIFUL.</p>
+                </div>
+                <div class="box border-l">
+                    <p>THEY PERFORM. FROM STRATEGY TO EXECUTION, WE BLEND CREATIVITY AND PRECISION.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <section class="gallery-grid">
+        <div class="item tall"><img src="photo1.jpg"></div>
+        <div class="item"><img src="photo2.jpg"></div>
+        <div class="item wide"><img src="photo3.jpg"></div>
+        <div class="item"><img src="photo4.jpg"></div>
+        <div class="item"><img src="photo5.jpg"></div>
+        <div class="item tall"><img src="photo6.jpg"></div>
     </section>
-
-    <section class="description-bar">
-        <div class="desc-left reveal">
-            <p>WE CRAFT DIGITAL EXPERIENCES AND VISUAL IDENTITIES THAT DON'T JUST LOOK BEAUTIFUL. THEY PERFORM.</p>
-        </div>
-        <div class="desc-right reveal">
-            <p>FROM STRATEGY TO EXECUTION, WE BLEND CREATIVITY AND PRECISION TO HELP AMBITIOUS BRANDS GROW.</p>
-        </div>
-    </section>
-
-    <section class="image-grid">
-        <div class="grid-item tall reveal"><img src="photo1.jpg" alt=""></div>
-        <div class="grid-item reveal"><img src="photo2.jpg" alt=""></div>
-        <div class="grid-item wide reveal"><img src="photo3.jpg" alt=""></div>
-        <div class="grid-item reveal"><img src="photo4.jpg" alt=""></div>
-        <div class="grid-item reveal"><img src="photo5.jpg" alt=""></div>
-        <div class="grid-item tall reveal"><img src="photo6.jpg" alt=""></div>
-        <div class="grid-item reveal"><img src="photo7.jpg" alt=""></div>
-        <div class="grid-item wide reveal"><img src="photo8.jpg" alt=""></div>
-        <div class="grid-item reveal"><img src="photo9.jpg" alt=""></div>
-        <div class="grid-item reveal"><img src="photo10.jpg" alt=""></div>
-    </section>
-
-    <footer class="reveal">
-        <h2>LET'S CREATE SOMETHING EXCEPTIONAL</h2>
-        <button class="cta-btn">START YOUR PROJECT →</button>
-    </footer>
 
     <script>
-        // ANIMATION SCRIPT: Makes elements fade in as you scroll
-        const observerOptions = { threshold: 0.1 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
+        gsap.registerPlugin(ScrollTrigger);
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        // CREATE THE EXACT AUREVIA TIMELINE
+        let tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#main-sequence",
+                start: "top top",
+                end: "+=300%", // Makes the scroll feel longer/smoother
+                pin: true,
+                scrub: 1, // Ties animation directly to scrollbar
+            }
+        });
+
+        // 1. Slide text out and Scale Video Up
+        tl.to(".left-t", { xPercent: -120, opacity: 0 }, 0)
+          .to(".right-t", { xPercent: 120, opacity: 0 }, 0)
+          .to(".video-window", { width: "100vw", height: "100vh", duration: 1 }, 0);
+
+        // 2. Slide the entire Hero Panel up to reveal the Description
+        tl.to(".hero-panel", { yPercent: -100, duration: 1 });
+        
+        // 3. Fade in the description boxes as they appear
+        tl.from(".desc-content", { opacity: 0, y: 50, duration: 0.5 }, "-=0.5");
     </script>
-
 </body>
 </html>
