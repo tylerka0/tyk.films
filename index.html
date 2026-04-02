@@ -12,7 +12,6 @@
 
     <nav>
         <a href="https://www.instagram.com/tyk.films/" target="_blank" class="logo">TYK.FILMS</a>
-        
         <div class="nav-btns">
             <a href="#work" class="btn">WORK</a>
             <a href="#about" class="btn">ABOUT</a>
@@ -37,12 +36,8 @@
 
         <section class="panel desc-panel" id="about">
             <div class="desc-content">
-                <div class="box">
-                    <p>WE CRAFT DIGITAL EXPERIENCES AND IDENTITIES THAT DON'T JUST LOOK BEAUTIFUL.</p>
-                </div>
-                <div class="box border-l">
-                    <p>THEY PERFORM. FROM STRATEGY TO EXECUTION, WE BLEND CREATIVITY AND PRECISION.</p>
-                </div>
+                <div class="box"><p>WE CRAFT DIGITAL EXPERIENCES AND IDENTITIES THAT DON'T JUST LOOK BEAUTIFUL.</p></div>
+                <div class="box border-l"><p>THEY PERFORM. FROM STRATEGY TO EXECUTION, WE BLEND CREATIVITY AND PRECISION.</p></div>
             </div>
         </section>
     </div>
@@ -69,19 +64,19 @@
                 scrollTrigger: {
                     trigger: "#main-sequence",
                     start: "top top",
-                    end: "+=200%", 
+                    end: "+=250%", 
                     pin: true,
                     scrub: 1,
                     anticipatePin: 1
                 }
             });
 
-            // HORIZONTAL EXPANSION LOGIC
+            // THE AUREVIA EXPANSION
             tl.to(".left-t", { xPercent: -150, opacity: 0 }, 0)
               .to(".right-t", { xPercent: 150, opacity: 0 }, 0)
               .to(".video-window", { 
-                width: "100vw",     // Expands to full screen width
-                height: "56.25vw",  // Forces 16:9 ratio (1080p look)
+                width: "100vw",     // Expands to full horizontal width
+                height: "56.25vw",  // Sets height to 16:9 ratio (1080p look)
                 margin: "0",
                 duration: 2,
                 ease: "power2.inOut"
