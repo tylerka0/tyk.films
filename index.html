@@ -1,82 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TYK.FILMS | AUREVIA EDIT</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-</head>
-<body>
-
-    <nav>
-        <div class="logo">TYK.FILMS</div>
-        <div class="nav-links"><a>WORK</a><a>ABOUT</a><a>CONTACT</a></div>
-    </nav>
-
-    <div id="main-sequence">
-        
-        <section class="panel hero-panel">
-            <div class="hero-content">
-                <div class="text-wrap left-t"><h1>WHERE<br>VISION</h1></div>
-                
-                <div class="video-window">
-                    <video autoplay muted loop playsinline>
-                        <source src="your-video.mp4" type="video/mp4">
-                    </video>
-                </div>
-
-                <div class="text-wrap right-t"><h1>MEETS<br>EXECUTION</h1></div>
-            </div>
-        </section>
-
-        <section class="panel desc-panel">
-            <div class="desc-content">
-                <div class="box">
-                    <p>WE CRAFT DIGITAL EXPERIENCES AND IDENTITIES THAT DON'T JUST LOOK BEAUTIFUL.</p>
-                </div>
-                <div class="box border-l">
-                    <p>THEY PERFORM. FROM STRATEGY TO EXECUTION, WE BLEND CREATIVITY AND PRECISION.</p>
-                </div>
-            </div>
-        </section>
-
+<nav>
+    <div class="logo">TYK.FILMS</div>
+    <div class="nav-btns">
+        <a href="#work" class="btn">WORK</a>
+        <a href="#about" class="btn">ABOUT</a>
+        <a href="#contact" class="btn">CONTACT</a>
     </div>
+</nav>
 
-    <section class="gallery-grid">
-        <div class="item tall"><img src="photo1.jpg"></div>
-        <div class="item"><img src="photo2.jpg"></div>
-        <div class="item wide"><img src="photo3.jpg"></div>
-        <div class="item"><img src="photo4.jpg"></div>
-        <div class="item"><img src="photo5.jpg"></div>
-        <div class="item tall"><img src="photo6.jpg"></div>
-    </section>
+<script>
+    gsap.registerPlugin(ScrollTrigger);
 
-    <script>
-        gsap.registerPlugin(ScrollTrigger);
+    let tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: "#main-sequence",
+            start: "top top",
+            end: "+=250%", 
+            pin: true,
+            scrub: 1,
+        }
+    });
 
-        // CREATE THE EXACT AUREVIA TIMELINE
-        let tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: "#main-sequence",
-                start: "top top",
-                end: "+=300%", // Makes the scroll feel longer/smoother
-                pin: true,
-                scrub: 1, // Ties animation directly to scrollbar
-            }
-        });
+    // 1. Text slides out faster
+    tl.to(".left-t", { xPercent: -150, opacity: 0 }, 0)
+      .to(".right-t", { xPercent: 150, opacity: 0 }, 0)
 
-        // 1. Slide text out and Scale Video Up
-        tl.to(".left-t", { xPercent: -120, opacity: 0 }, 0)
-          .to(".right-t", { xPercent: 120, opacity: 0 }, 0)
-          .to(".video-window", { width: "100vw", height: "100vh", duration: 1 }, 0);
+    // 2. Video zooms out to fill the screen width comfortably
+    // We use 100vw and 100vh to make it "Fit the page"
+      .to(".video-window", { 
+        width: "100vw", 
+        height: "100vh", 
+        margin: "0",
+        borderRadius: "0px",
+        duration: 2,
+        ease: "none"
+      }, 0);
 
-        // 2. Slide the entire Hero Panel up to reveal the Description
-        tl.to(".hero-panel", { yPercent: -100, duration: 1 });
-        
-        // 3. Fade in the description boxes as they appear
-        tl.from(".desc-content", { opacity: 0, y: 50, duration: 0.5 }, "-=0.5");
-    </script>
-</body>
-</html>
+    // 3. Reveal next section
+    tl.to(".hero-panel", { yPercent: -100, duration: 1 });
+</script>
