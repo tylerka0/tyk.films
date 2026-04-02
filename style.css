@@ -1,4 +1,4 @@
-/* Fix for smooth, fast scrolling between sections */
+/* Smooth scrolling prevents "jumping" when clicking nav buttons */
 html {
     scroll-behavior: smooth;
 }
@@ -48,7 +48,7 @@ nav {
 
 .btn:hover { background: #000; color: #fff; }
 
-/* MASTER SEQUENCE */
+/* ANIMATION PANELS */
 #main-sequence {
     position: relative;
     height: 100vh;
@@ -80,10 +80,10 @@ nav {
     color: #000;
 }
 
-/* STARTING SHAPE: Horizontal Rectangle instead of Vertical Strip */
+/* STARTING STATE: The Vertical Sliver */
 .video-window {
-    width: 400px;   /* Start wider */
-    height: 225px;  /* Start at a 16:9 ratio (400 * 9 / 16) */
+    width: 120px;   /* Very narrow strip start */
+    height: 450px;  /* Vertical height */
     margin: 0 40px;
     background: #000;
     overflow: hidden;
@@ -94,10 +94,10 @@ nav {
 .video-window video {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Video stays centered while container expands horizontally */
 }
 
-/* DESCRIPTION BOXES */
+/* CONTENT SECTIONS */
 .desc-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -109,7 +109,6 @@ nav {
 .box { padding: 80px 40px; font-size: 1.5rem; font-weight: 500; }
 .border-l { border-left: 2px solid #000; }
 
-/* GALLERY GRID */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -124,6 +123,6 @@ footer { padding: 100px 50px; text-align: center; }
 
 @media (max-width: 768px) {
     .hero-content { flex-direction: column; }
-    .video-window { width: 80vw; height: 45vw; margin: 30px 0; }
+    .video-window { width: 40vw; height: 70vw; margin: 30px 0; }
     .text-wrap h1 { font-size: 14vw; }
 }
