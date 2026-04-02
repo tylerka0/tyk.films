@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    text-decoration: none; /* Globally removes all underlines */
+    text-decoration: none !important; /* No underlines anywhere */
 }
 
 body {
@@ -50,7 +50,7 @@ nav {
     color: #fff;
 }
 
-/* MAIN SEQUENCE */
+/* MASTER SEQUENCE */
 #main-sequence {
     position: relative;
     height: 100vh;
@@ -75,18 +75,18 @@ nav {
 }
 
 .text-wrap h1 {
-    font-size: 8vw;
+    font-size: 9vw;
     font-weight: 900;
     line-height: 0.85;
-    letter-spacing: -5px;
+    letter-spacing: -6px;
     color: #000;
 }
 
-/* STARTING VIDEO SIZE */
+/* STARTING SHAPE (Vertical strip) */
 .video-window {
-    width: 320px;  /* Defined starting width for GSAP to track */
-    height: 420px; /* Defined starting height */
-    margin: 0 40px;
+    width: 200px;  
+    height: 400px; 
+    margin: 0 60px;
     background: #000;
     overflow: hidden;
     position: relative;
@@ -103,13 +103,13 @@ nav {
 .desc-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    width: 80%;
-    border-top: 1.5px solid #000;
-    border-bottom: 1.5px solid #000;
+    width: 85%;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
 }
 
 .box { padding: 80px 40px; font-size: 1.5rem; font-weight: 500; line-height: 1.2; }
-.border-l { border-left: 1.5px solid #000; }
+.border-l { border-left: 2px solid #000; }
 
 /* GALLERY GRID */
 .gallery-grid {
@@ -122,10 +122,9 @@ nav {
 .tall { grid-row: span 2; }
 .wide { grid-column: span 2; }
 
-/* MOBILE ADJUSTMENTS */
+/* MOBILE */
 @media (max-width: 768px) {
-    nav { padding: 20px; }
     .hero-content { flex-direction: column; }
-    .video-window { width: 75vw; height: 100vw; margin: 30px 0; }
-    .text-wrap h1 { font-size: 14vw; }
+    .video-window { width: 60vw; height: 80vw; margin: 30px 0; }
+    .text-wrap h1 { font-size: 14vw; letter-spacing: -3px; }
 }
