@@ -1,17 +1,36 @@
-/* Navigation Buttons */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #fff;
+    color: #000;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* NAVIGATION */
 nav {
-    position: fixed; 
-    width: 100%; 
-    padding: 30px 50px; 
-    display: flex; 
-    justify-content: space-between; 
+    position: fixed;
+    width: 100%;
+    padding: 30px 50px;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     z-index: 1000;
 }
 
+.logo {
+    font-weight: 900;
+    letter-spacing: -1px;
+    font-size: 1.2rem;
+}
+
 .nav-btns {
     display: flex;
-    gap: 20px; /* Separates the buttons */
+    gap: 15px; /* Spacing between buttons */
 }
 
 .btn {
@@ -19,10 +38,10 @@ nav {
     color: #000;
     font-size: 0.7rem;
     font-weight: 800;
-    padding: 10px 20px;
-    border: 1px solid #000; /* Makes them look like actual buttons */
+    padding: 10px 22px;
+    border: 1.5px solid #000;
     text-transform: uppercase;
-    transition: background 0.3s, color 0.3s;
+    transition: all 0.3s ease;
 }
 
 .btn:hover {
@@ -30,28 +49,131 @@ nav {
     color: #fff;
 }
 
-/* Video Window - Set to a Cinematic Ratio, not a square */
+/* MAIN SEQUENCE LAYOUT */
+#main-sequence {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+.panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* HERO SLIDE */
+.hero-panel {
+    background: #fff;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.text-wrap h1 {
+    font-size: 9vw;
+    font-weight: 900;
+    line-height: 0.8;
+    letter-spacing: -6px;
+    text-transform: uppercase;
+}
+
+/* Start as a Cinematic rectangle (16:9) */
 .video-window {
-    width: 45vw;    /* Wider starting point */
-    height: 25.3vw; /* Maintains 16:9 ratio (45 * 9 / 16) */
+    width: 45vw;
+    height: 25.3vw; /* Ratio-based height */
+    margin: 0 40px;
     background: #000;
     overflow: hidden;
     flex-shrink: 0;
     z-index: 2;
-    position: relative;
 }
 
 .video-window video {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures video fills the frame without stretching */
+    object-fit: cover;
 }
 
-/* Typography fix for the cinematic look */
-.text-wrap h1 {
-    font-size: 9vw;
-    font-weight: 900;
-    letter-spacing: -6px;
-    line-height: 0.8;
-    text-transform: uppercase;
+/* DESCRIPTION SLIDE */
+.desc-panel {
+    background: #fff;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #000;
+}
+
+.desc-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 85%;
+}
+
+.box {
+    padding: 60px;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+.border-l {
+    border-left: 1.5px solid #000;
+}
+
+/* PHOTO GALLERY */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 15px;
+    background: #fff;
+}
+
+.item {
+    overflow: hidden;
+    background: #eee;
+}
+
+.item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border: 1px solid #000;
+}
+
+.tall { grid-row: span 2; }
+.wide { grid-column: span 2; }
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+    nav { padding: 20px; }
+    .nav-btns { gap: 8px; }
+    .btn { padding: 8px 12px; font-size: 0.6rem; }
+    
+    .hero-content { flex-direction: column; }
+    .video-window { width: 80vw; height: 45vw; margin: 30px 0; }
+    .text-wrap h1 { font-size: 14vw; letter-spacing: -2px; }
+    
+    .desc-content { grid-template-columns: 1fr; }
+    .border-l { border-left: none; border-top: 1.5px solid #000; }
+    .box { padding: 30px; font-size: 1.2rem; }
+    
+    .gallery-grid { grid-template-columns: 1fr; }
+    .wide, .tall { grid-column: span 1; grid-row: span 1; }
 }
