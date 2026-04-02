@@ -5,51 +5,65 @@
 }
 
 body {
-    background-color: #fff;
-    color: #000;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    line-height: 1.2;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.1;
+    overflow-x: hidden;
 }
 
-/* Nav Bar */
+/* NAVIGATION */
 nav {
     display: flex;
     justify-content: space-between;
-    padding: 2rem;
+    padding: 1.5rem 2rem;
     border-bottom: 1px solid #000;
-    font-weight: bold;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 100;
+}
+
+.logo {
+    font-weight: 900;
     letter-spacing: -1px;
+    font-size: 1.2rem;
 }
 
 .nav-links a {
     margin-left: 20px;
     text-decoration: none;
     color: #000;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
-/* Hero Section mimicking the video */
+/* HERO SECTION */
 .hero-split {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 80vh;
+    height: 90vh;
     border-bottom: 1px solid #000;
     padding: 0 5%;
+    background: #fff;
 }
 
 .hero-text h1 {
-    font-size: 5vw;
+    font-size: clamp(3rem, 8vw, 10rem);
     font-weight: 900;
-    letter-spacing: -2px;
+    letter-spacing: -4px;
+    line-height: 0.85;
 }
 
 .hero-video-container {
-    width: 30%;
-    height: 400px;
-    margin: 0 40px;
+    width: 35%;
+    aspect-ratio: 4/5;
+    margin: 0 3vw;
     border: 1px solid #000;
     overflow: hidden;
+    background: #f0f0f0;
 }
 
 .hero-video-container video {
@@ -58,7 +72,7 @@ nav {
     object-fit: cover;
 }
 
-/* Description Bar */
+/* DESCRIPTION BAR */
 .description-bar {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -66,66 +80,95 @@ nav {
 }
 
 .desc-left, .desc-right {
-    padding: 4rem 2rem;
-    font-size: 1.2rem;
+    padding: 5rem 3rem;
+    font-size: 1.5rem;
     font-weight: 500;
+    letter-spacing: -0.5px;
 }
 
 .desc-left {
     border-right: 1px solid #000;
 }
 
-/* Broken Grid Gallery */
+/* GALLERY GRID */
 .image-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 300px;
+    grid-auto-rows: 400px;
 }
 
 .grid-item {
     border-right: 1px solid #000;
     border-bottom: 1px solid #000;
     overflow: hidden;
+    position: relative;
 }
 
 .grid-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .grid-item:hover img {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
+/* Grid Layout Variations */
 .tall { grid-row: span 2; }
 .wide { grid-column: span 2; }
 
-/* Footer CTA */
+/* FOOTER */
 footer {
-    padding: 10vh 5%;
-    text-align: left;
+    padding: 15vh 5%;
+    background: #fff;
 }
 
 footer h2 {
-    font-size: 4vw;
-    margin-bottom: 2rem;
+    font-size: clamp(2rem, 5vw, 6rem);
+    font-weight: 900;
+    letter-spacing: -2px;
+    margin-bottom: 3rem;
 }
 
 .cta-btn {
     background: #000;
     color: #fff;
-    padding: 1.5rem 3rem;
+    padding: 1.2rem 2.5rem;
     border: none;
-    cursor: pointer;
     font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
 }
 
-/* Mobile Fix */
+.cta-btn:hover {
+    background: #333;
+}
+
+/* REVEAL ANIMATION CLASSES */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 1024px) {
+    .image-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (max-width: 768px) {
-    .hero-split { flex-direction: column; height: auto; padding: 4rem 0; }
-    .hero-video-container { width: 80%; margin: 2rem 0; }
+    .hero-split { flex-direction: column; height: auto; padding: 10vh 5%; }
+    .hero-video-container { width: 90%; margin: 2rem 0; }
     .description-bar { grid-template-columns: 1fr; }
+    .desc-left { border-right: none; border-bottom: 1px solid #000; }
     .image-grid { grid-template-columns: 1fr; }
+    .wide, .tall { grid-column: span 1; grid-row: span 1; }
 }
