@@ -12,7 +12,6 @@
 
     <nav>
         <a href="https://www.instagram.com/tyk.films/" target="_blank" class="logo">TYK.FILMS</a>
-        
         <div class="nav-btns">
             <a href="#work" class="btn">WORK</a>
             <a href="#about" class="btn">ABOUT</a>
@@ -37,12 +36,8 @@
 
         <section class="panel desc-panel" id="about">
             <div class="desc-content">
-                <div class="box">
-                    <p>WE CRAFT DIGITAL EXPERIENCES AND IDENTITIES THAT DON'T JUST LOOK BEAUTIFUL.</p>
-                </div>
-                <div class="box border-l">
-                    <p>THEY PERFORM. FROM STRATEGY TO EXECUTION, WE BLEND CREATIVITY AND PRECISION.</p>
-                </div>
+                <div class="box"><p>WE CRAFT DIGITAL EXPERIENCES AND IDENTITIES THAT DON'T JUST LOOK BEAUTIFUL.</p></div>
+                <div class="box border-l"><p>THEY PERFORM. FROM STRATEGY TO EXECUTION, WE BLEND CREATIVITY AND PRECISION.</p></div>
             </div>
         </section>
     </div>
@@ -54,11 +49,12 @@
         <div class="item"><img src="photo4.jpg"></div>
         <div class="item tall"><img src="photo5.jpg"></div>
         <div class="item"><img src="photo6.jpg"></div>
-        <div class="item"><img src="photo7.jpg"></div>
-        <div class="item wide"><img src="photo8.jpg"></div>
-        <div class="item"><img src="photo9.jpg"></div>
-        <div class="item"><img src="photo10.jpg"></div>
     </section>
+
+    <footer id="contact">
+        <h2>LET'S WORK.</h2>
+        <a href="mailto:contact@tykfilms.com" class="btn">EMAIL ME</a>
+    </footer>
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
@@ -75,13 +71,12 @@
                 }
             });
 
-            // THE HORIZONTAL EXPANSION
-            // We move the text away while the video width grows to its original cinematic ratio
             tl.to(".left-t", { xPercent: -150, opacity: 0 }, 0)
               .to(".right-t", { xPercent: 150, opacity: 0 }, 0)
               .to(".video-window", { 
-                width: "80vw",      // Expands horizontally to full cinematic width
-                height: "45vw",     // Locks to a 16:9 ratio (80 * 9 / 16)
+                width: "100vw",     // Expands to full screen width
+                height: "56.25vw",  // Sets height to 16:9 ratio (Full 1920x1080 look)
+                margin: "0",
                 duration: 2,
                 ease: "power2.inOut"
               }, 0)
