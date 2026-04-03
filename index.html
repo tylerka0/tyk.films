@@ -1,52 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TYK.FILMS | ARCHIVE</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-</head>
-<body>
-    <nav>
-        <a href="https://www.instagram.com/tyk.films/" target="_blank" class="logo">TYK.FILMS</a>
-        <div class="nav-btns">
-            <a href="#work" class="btn">WORK</a>
-            <a href="#about" class="btn">ABOUT</a>
-            <a href="#contact" class="btn">CONTACT</a>
-        </div>
-    </nav>
-    <div id="main-sequence">
-        <section class="panel hero-panel">
-            <div class="hero-content">
-                <div class="text-wrap left-t"><h1>WHERE<br>VISION</h1></div>
-                <div class="video-window">
-                    <video autoplay muted loop playsinline>
-                        <source src="your-video.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="text-wrap right-t"><h1>MEETS<br>EXECUTION</h1></div>
-            </div>
-        </section>
-        <section class="panel desc-panel" id="about">
-            <div class="desc-content">
-                <div class="box"><p>WE CRAFT DIGITAL EXPERIENCES AND IDENTITIES THAT DON'T JUST LOOK BEAUTIFUL.</p></div>
-                <div class="box border-l"><p>THEY PERFORM. FROM STRATEGY TO EXECUTION, WE BLEND CREATIVITY AND PRECISION.</p></div>
-            </div>
-        </section>
-    </div>
-    <section class="gallery-grid" id="work">
-        <div class="item tall"><img src="photo1.jpg"></div>
-        <div class="item"><img src="photo2.jpg"></div>
-        <div class="item wide"><img src="photo3.jpg"></div>
-        <div class="item"><img src="photo4.jpg"></div>
-        <div class="item tall"><img src="photo5.jpg"></div>
-        <div class="item"><img src="photo6.jpg"></div>
-    </section>
-    <footer id="contact">
-        <h2>LET'S WORK.</h2>
-        <a href="mailto:contact@tykfilms.com" class="btn">EMAIL ME</a>
-    </footer>
-    <script>
-        gsap.re
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // This ensures everything is loaded before measuring the page
+    window.addEventListener("load", function() {
+        
+        // Initial state for the horizontal sliver
+        gsap.set(".video-window", { 
+            width: "450px", 
+            height: "80px",
+            opacity: 1 
+        });
+
+        let tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#main-sequence",
+                start: "top top",
+                end: "+=250%",
+                pin: true,
+                scrub: 1,
+                anticipatePin: 1,
+                invalidateOnRefresh: true // Recalculates if window changes
+            }
+        });
+
+        tl.to(".left-t", { xPercent: -150, opacity: 0 }, 0)
+          .to(".right-t", { xPercent: 150, opacity: 0 }, 0)
+          .to(".video-window", {
+              width: "100vw",
+              height: "56.25vw", // Perfect 16:9 ratio
+              margin: "0",
+              duration: 2,
+              ease: "power2.inOut"
+          }, 0)
+          .to(".hero-panel", { yPercent: -100, duration: 1 });
+
+        // THE MAGIC FIX: This forces the browser to "see" the scroll positions 
+        // without needing to open the inspector.
+        ScrollTrigger.refresh();
+    });
+</script>
