@@ -1,15 +1,12 @@
-/* Smooth scrolling prevents "jumping" when clicking nav buttons */
 html {
     scroll-behavior: smooth;
 }
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    text-decoration: none !important; /* Removes all underlines */
+    text-decoration: none !important;
 }
-
 body {
     background: #fff;
     color: #000;
@@ -27,15 +24,12 @@ nav {
     align-items: center;
     z-index: 1000;
 }
-
-.logo { 
-    font-weight: 900; 
-    font-size: 1.2rem; 
+.logo {
+    font-weight: 900;
+    font-size: 1.2rem;
     color: #000;
 }
-
 .nav-btns { display: flex; gap: 15px; }
-
 .btn {
     color: #000;
     font-size: 0.7rem;
@@ -45,7 +39,6 @@ nav {
     text-transform: uppercase;
     transition: 0.3s;
 }
-
 .btn:hover { background: #000; color: #fff; }
 
 /* ANIMATION PANELS */
@@ -54,24 +47,20 @@ nav {
     height: 100vh;
     width: 100%;
 }
-
 .panel {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100vh;
     display: flex; align-items: center; justify-content: center;
 }
-
 .hero-panel { z-index: 10; background: #fff; }
 .desc-panel { z-index: 5; background: #fff; }
-
 .hero-content {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
 }
-
 .text-wrap h1 {
     font-size: 9vw;
     font-weight: 900;
@@ -80,21 +69,20 @@ nav {
     color: #000;
 }
 
-/* STARTING STATE: The Vertical Sliver */
+/* STARTING STATE: The Horizontal Sliver */
 .video-window {
-    width: 120px;   /* Very narrow strip start */
-    height: 450px;  /* Vertical height */
+    width: 450px;    /* Wide horizontal start */
+    height: 80px;    /* Very thin strip */
     margin: 0 40px;
     background: #000;
     overflow: hidden;
     position: relative;
     z-index: 2;
 }
-
 .video-window video {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Video stays centered while container expands horizontally */
+    object-fit: cover;
 }
 
 /* CONTENT SECTIONS */
@@ -105,24 +93,20 @@ nav {
     border-top: 2px solid #000;
     border-bottom: 2px solid #000;
 }
-
 .box { padding: 80px 40px; font-size: 1.5rem; font-weight: 500; }
 .border-l { border-left: 2px solid #000; }
-
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px; padding: 15px;
 }
-
 .item img { width: 100%; height: 100%; object-fit: cover; border: 1px solid #000; display: block; }
 .tall { grid-row: span 2; }
 .wide { grid-column: span 2; }
-
 footer { padding: 100px 50px; text-align: center; }
 
 @media (max-width: 768px) {
     .hero-content { flex-direction: column; }
-    .video-window { width: 40vw; height: 70vw; margin: 30px 0; }
+    .video-window { width: 80vw; height: 45vw; margin: 30px 0; }
     .text-wrap h1 { font-size: 14vw; }
 }
