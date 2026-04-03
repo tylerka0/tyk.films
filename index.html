@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TYK.FILMS | ARCHIVE</title>
-    <link rel="stylesheet" href="style.css">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -61,35 +62,38 @@
     </footer>
 
     <script>
-        // Wait for everything to load so ScrollTrigger has the correct measurements
+        // Use 'load' to ensure everything is ready for ScrollTrigger to calculate
         window.addEventListener("load", function() {
-            gsap.registerPlugin(ScrollTrigger);
+            if (window.gsap) {
+                gsap.registerPlugin(ScrollTrigger);
 
-            let tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: "#main-sequence",
-                    start: "top top",
-                    end: "+=250%", 
-                    pin: true,
-                    scrub: 1,
-                    anticipatePin: 1,
-                    invalidateOnRefresh: true
-                }
-            });
+                let tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: "#main-sequence",
+                        start: "top top",
+                        end: "+=250%", 
+                        pin: true,
+                        scrub: 1,
+                        anticipatePin: 1,
+                        invalidateOnRefresh: true
+                    }
+                });
 
-            tl.to(".left-t", { xPercent: -150, opacity: 0 }, 0)
-              .to(".right-t", { xPercent: 150, opacity: 0 }, 0)
-              .to(".video-window", { 
-                width: "100vw",     
-                height: "56.25vw",  
-                margin: "0",
-                duration: 2,
-                ease: "power2.inOut"
-              }, 0)
-              .to(".hero-panel", { yPercent: -100, duration: 1 });
+                // The Animation: Text slides out, Video goes Vertical -> Full Horizontal
+                tl.to(".left-t", { xPercent: -150, opacity: 0 }, 0)
+                  .to(".right-t", { xPercent: 150, opacity: 0 }, 0)
+                  .to(".video-window", { 
+                    width: "100vw",     
+                    height: "56.25vw",  // Forces 16:9 cinematic ratio
+                    margin: "0",
+                    duration: 2,
+                    ease: "power2.inOut"
+                  }, 0)
+                  .to(".hero-panel", { yPercent: -100, duration: 1 });
 
-            // Force calculation after the page is ready to prevent the "Inspector Mode" bug
-            ScrollTrigger.refresh();
+                // Forces recalculation of scroll points to prevent the "Inspector Mode" bug
+                ScrollTrigger.refresh();
+            }
         });
     </script>
 </body>
