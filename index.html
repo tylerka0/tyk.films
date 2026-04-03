@@ -21,7 +21,6 @@
         <section class="panel hero-panel">
             <div class="hero-content">
                 <div class="text-wrap left-t"><h1>WHERE<br>VISION</h1></div>
-                
                 <div class="video-window">
                     <video autoplay muted loop playsinline>
                         <source src="your-video.mp4" type="video/mp4">
@@ -50,29 +49,4 @@
         <a href="mailto:contact@tykfilms.com" class="btn">EMAIL ME</a>
     </footer>
     <script>
-        gsap.registerPlugin(ScrollTrigger);
-        window.addEventListener("load", function() {
-            let tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: "#main-sequence",
-                    start: "top top",
-                    end: "+=250%",
-                    pin: true,
-                    scrub: 1,
-                    anticipatePin: 1
-                }
-            });
-            tl.to(".left-t", { xPercent: -150, opacity: 0 }, 0)
-              .to(".right-t", { xPercent: 150, opacity: 0 }, 0)
-              .to(".video-window", {
-                width: "100vw",
-                height: "56.25vw",
-                margin: "0",
-                duration: 2,
-                ease: "power2.inOut"
-              }, 0)
-              .to(".hero-panel", { yPercent: -100, duration: 1 });
-        });
-    </script>
-</body>
-</html>
+        gsap.re
