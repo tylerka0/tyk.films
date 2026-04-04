@@ -39,11 +39,8 @@
         </section>
     </div>
 
-    <section class="gallery-wrapper" id="work">
-        <div class="photo-item vert"><img src="photo1.jpg"></div> <div class="photo-item horiz-top"><img src="photo2.jpg"></div> <div class="photo-item horiz-mid"><img src="photo3.jpg"></div>
-        <div class="photo-item horiz-mid"><img src="photo4.jpg"></div>
-
-        <div class="photo-item vert"><img src="photo5.jpg"></div> <div class="photo-item vert"><img src="photo6.jpg"></div> <div class="photo-item vert"><img src="photo7.jpg"></div> <div class="photo-item horiz-bot"><img src="photo8.jpg"></div> </section>
+    <section class="gallery-grid" id="work">
+        <div class="item v1"><img src="photo1.jpg"></div> <div class="item h1"><img src="photo2.jpg"></div> <div class="item h2"><img src="photo3.jpg"></div> <div class="item h3"><img src="photo4.jpg"></div> <div class="item v2"><img src="photo5.jpg"></div> <div class="item v3"><img src="photo6.jpg"></div> <div class="item v4"><img src="photo7.jpg"></div> <div class="item h4"><img src="photo8.jpg"></div> </section>
 
     <footer id="contact">
         <h2>LET'S WORK.</h2>
@@ -70,8 +67,12 @@
             tl.to(".left-t", { xPercent: -130, opacity: 0 }, 0)
               .to(".right-t", { xPercent: 130, opacity: 0 }, 0)
               .to(".video-window", { 
-                width: "90vw", height: "55vw", maxWidth: "1100px", maxHeight: "600px",
-                duration: 2, ease: "none" 
+                width: "90vw", 
+                height: "55vw", 
+                maxWidth: "1100px", 
+                maxHeight: "600px",
+                duration: 2, 
+                ease: "none" 
               }, 0)
               .to(".hero-panel", { yPercent: -100, duration: 1 });
         });
