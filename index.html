@@ -49,12 +49,10 @@
     </div>
 
     <section class="gallery-wrapper" id="work">
-        <div class="photo-item"><img src="photo1.jpg"></div>
-        <div class="photo-item"><img src="photo2.jpg"></div>
-        <div class="photo-item"><img src="photo3.jpg"></div>
-        <div class="photo-item"><img src="photo4.jpg"></div> 
+        <div class="photo-item"><img src="photo1.jpg"></div> <div class="photo-item"><img src="photo2.jpg"></div> <div class="photo-item"><img src="photo3.jpg"></div>
+        <div class="photo-item"><img src="photo4.jpg"></div>
         <div class="photo-item"><img src="photo5.jpg"></div>
-        <div class="photo-item"><img src="photo6.jpg"></div> 
+        <div class="photo-item"><img src="photo6.jpg"></div>
     </section>
 
     <footer id="contact">
@@ -81,16 +79,17 @@
                     }
                 });
 
+                // Expands directly from existing sliver dimensions
                 tl.to(".left-t", { xPercent: -120, opacity: 0 }, 0)
                   .to(".right-t", { xPercent: 120, opacity: 0 }, 0)
                   .to(".video-window", { 
                     width: "90vw",     
                     height: "50vw",  
                     maxWidth: "1100px", 
-                    maxHeight: "600px", // Stops expansion before hitting buttons
+                    maxHeight: "600px", // Safety cap to avoid button overlap
                     margin: "0",
                     duration: 2,
-                    ease: "power2.inOut"
+                    ease: "none" // Smoother transition from sliver to full size
                   }, 0)
                   .to(".hero-panel", { yPercent: -100, duration: 1 });
             }
