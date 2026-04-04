@@ -49,11 +49,13 @@
     </div>
 
     <section class="gallery-wrapper" id="work">
-        <div class="photo-item"><img src="photo1.jpg"></div> <div class="photo-item"><img src="photo2.jpg"></div> <div class="photo-item"><img src="photo3.jpg"></div>
-        <div class="photo-item"><img src="photo4.jpg"></div>
-        <div class="photo-item"><img src="photo5.jpg"></div>
-        <div class="photo-item"><img src="photo6.jpg"></div>
-    </section>
+        <div class="photo-item feature-tall"><img src="photo6.jpg"></div> 
+        <div class="photo-item feature-wide"><img src="photo2.jpg"></div> 
+
+        <div class="photo-item standard"><img src="photo3.jpg"></div>
+        <div class="photo-item standard"><img src="photo4.jpg"></div>
+
+        <div class="photo-item standard"><img src="photo1.jpg"></div> <div class="photo-item standard"><img src="photo7.jpg"></div> <div class="photo-item standard"><img src="photo5.jpg"></div> <div class="photo-item standard"><img src="photo8.jpg"></div> </section>
 
     <footer id="contact">
         <h2>LET'S WORK.</h2>
@@ -65,34 +67,31 @@
 
     <script>
         window.addEventListener("load", function() {
-            if (window.gsap) {
-                gsap.registerPlugin(ScrollTrigger);
+            gsap.registerPlugin(ScrollTrigger);
 
-                let tl = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: "#main-sequence",
-                        start: "top top",
-                        end: "+=200%", 
-                        pin: true,
-                        scrub: 1,
-                        anticipatePin: 1
-                    }
-                });
+            let tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#main-sequence",
+                    start: "top top",
+                    end: "+=200%", 
+                    pin: true,
+                    scrub: 1,
+                    anticipatePin: 1
+                }
+            });
 
-                // Expands directly from existing sliver dimensions
-                tl.to(".left-t", { xPercent: -120, opacity: 0 }, 0)
-                  .to(".right-t", { xPercent: 120, opacity: 0 }, 0)
-                  .to(".video-window", { 
-                    width: "90vw",     
-                    height: "50vw",  
-                    maxWidth: "1100px", 
-                    maxHeight: "600px", // Safety cap to avoid button overlap
-                    margin: "0",
-                    duration: 2,
-                    ease: "none" // Smoother transition from sliver to full size
-                  }, 0)
-                  .to(".hero-panel", { yPercent: -100, duration: 1 });
-            }
+            // Fixed Smooth Expansion logic
+            tl.to(".left-t", { xPercent: -130, opacity: 0 }, 0)
+              .to(".right-t", { xPercent: 130, opacity: 0 }, 0)
+              .to(".video-window", { 
+                width: "90vw",     
+                height: "55vw",  
+                maxWidth: "1100px", 
+                maxHeight: "600px",
+                duration: 2,
+                ease: "power1.inOut" 
+              }, 0)
+              .to(".hero-panel", { yPercent: -100, duration: 1 });
         });
     </script>
 </body>
