@@ -1,16 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--
+================================================================================
+  TYK.FILMS — index.html  (MAIN PAGE)
+================================================================================
+
+  THIS FILE IS WHERE YOU EDIT MOST “CONTENT”:
+    • Words people read (headlines, bio, footer)
+    • Which video file plays in the hero
+    • Which photos show in the gallery (photo1.jpg, photo2.jpg, …)
+    • Menu links jump to sections using id="work", id="about", id="contact"
+
+  OTHER FILES (if you need to change look or scroll animation):
+    • css/site.css        → colors, fonts, spacing, phone layout
+    • js/hero-animation.js → scroll / video grow effect on first screen
+    • WHERE-TO-EDIT.txt   → cheat sheet (same folder as this file)
+
+================================================================================
+-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TYK.FILMS | ARCHIVE</title>
+
+    <!-- Animation library (needed for hero scroll). Do not delete unless you remove hero-animation.js too. -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+
+    <!-- All visual styling lives in this one CSS file -->
+    <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
+
+    <!-- ========================================================================
+         TOP MENU (fixed bar)
+         Edit: link URLs, button labels (WORK / ABOUT / CONTACT), logo text
+         Style (colors, size): css/site.css → search “TOP MENU”
+         ======================================================================== -->
     <nav>
-        <a href="https://www.instagram.com/tyk.films/" target="_blank" class="logo">TYK.FILMS</a>
+        <a href="https://www.instagram.com/tyk.films/" target="_blank" rel="noopener noreferrer" class="logo">TYK.FILMS</a>
         <div class="nav-btns">
             <a href="#work" class="btn">WORK</a>
             <a href="#about" class="btn">ABOUT</a>
@@ -18,64 +46,94 @@
         </div>
     </nav>
 
+    <!-- ========================================================================
+         HERO + ABOUT (scroll-pinned block)
+         The id="main-sequence" is used by js/hero-animation.js — do not rename
+         without editing that file too.
+         ======================================================================== -->
     <div id="main-sequence">
+
+        <!-- First screen: big type + video. Class names left-t / right-t are used by JS. -->
         <section class="panel hero-panel">
             <div class="hero-content">
-                <div class="text-wrap left-t"><h1>SHOOT<br>WITH</h1></div>
+                <div class="text-wrap left-t">
+                    <!-- ▼▼▼ LEFT HEADLINE (two lines) ▼▼▼ -->
+                    <h1>SHOOT<br>WITH</h1>
+                    <!-- ▲▲▲ END EDIT ▲▲▲ -->
+                </div>
+
                 <div class="video-window">
+                    <!--
+                      HERO VIDEO
+                      Put your .mp4 file in the SAME FOLDER as index.html (or use a subfolder path).
+                      If you rename the file, change src= below AND the <source> line.
+                      Optional poster="your-poster.jpg" shows an image before video loads.
+                    -->
                     <video autoplay muted loop playsinline>
                         <source src="your-video.mp4" type="video/mp4">
                     </video>
                 </div>
-                <div class="text-wrap right-t"><h1>INTENTION</h1></div>
+
+                <div class="text-wrap right-t">
+                    <!-- ▼▼▼ RIGHT HEADLINE (one line) ▼▼▼ -->
+                    <h1>INTENTION</h1>
+                    <!-- ▲▲▲ END EDIT ▲▲▲ -->
+                </div>
             </div>
         </section>
 
+        <!-- Second panel in the same scroll chapter: about / bio copy -->
         <section class="panel desc-panel" id="about">
             <div class="desc-content">
-                <div class="box"><p>I SPECIALIZE IN CAPTURING THE SPLIT-SECOND MOMENTS THAT DEFINE THE GAME—THE RAW MOTION THAT MAKES SPORTS LEGENDARY.</p></div>
-                <div class="box border-l"><p>I’M TYLER. BASED IN SANTA CLARA, I PROVIDE ATHLETES AND TEAMS WITH PROFESSIONAL-LEVEL VISUAL MEDIA AND CINEMATOGRAPHY.</p></div>
+                <div class="box">
+                    <!-- ▼▼▼ ABOUT — LEFT COLUMN TEXT ▼▼▼ -->
+                    <p>I SPECIALIZE IN CAPTURING THE SPLIT-SECOND MOMENTS THAT DEFINE THE GAME—THE RAW MOTION THAT MAKES SPORTS LEGENDARY.</p>
+                    <!-- ▲▲▲ END EDIT ▲▲▲ -->
+                </div>
+                <div class="box border-l">
+                    <!-- ▼▼▼ ABOUT — RIGHT COLUMN TEXT ▼▼▼ -->
+                    <p>I’M TYLER. BASED IN SANTA CLARA, I PROVIDE ATHLETES AND TEAMS WITH PROFESSIONAL-LEVEL VISUAL MEDIA AND CINEMATOGRAPHY.</p>
+                    <!-- ▲▲▲ END EDIT ▲▲▲ -->
+                </div>
             </div>
         </section>
     </div>
 
+    <!-- ========================================================================
+         PHOTO GALLERY
+         id="work" is what the WORK menu button scrolls to.
+         Each block: change src="photoX.jpg" to point at your image file.
+         Classes v1, h1, … control POSITION in the desktop mosaic (see css/site.css).
+         On phones, css makes this a single column — order follows HTML order.
+         ======================================================================== -->
     <section class="gallery-grid" id="work">
-        <div class="item v1"><img src="photo1.jpg"></div> <div class="item h1"><img src="photo2.jpg"></div> <div class="item h2"><img src="photo3.jpg"></div> <div class="item h3"><img src="photo4.jpg"></div> <div class="item v2"><img src="photo5.jpg"></div> <div class="item v3"><img src="photo6.jpg"></div> <div class="item v4"><img src="photo7.jpg"></div> <div class="item h4"><img src="photo8.jpg"></div> </section>
+        <div class="item v1"><img src="photo1.jpg" alt=""></div>
+        <div class="item h1"><img src="photo2.jpg" alt=""></div>
+        <div class="item h2"><img src="photo3.jpg" alt=""></div>
+        <div class="item h3"><img src="photo4.jpg" alt=""></div>
+        <div class="item v2"><img src="photo5.jpg" alt=""></div>
+        <div class="item v3"><img src="photo6.jpg" alt=""></div>
+        <div class="item v4"><img src="photo7.jpg" alt=""></div>
+        <div class="item h4"><img src="photo8.jpg" alt=""></div>
+    </section>
 
+    <!-- ========================================================================
+         FOOTER / CONTACT
+         id="contact" is what the CONTACT menu button scrolls to.
+         ======================================================================== -->
     <footer id="contact">
+        <!-- ▼▼▼ BIG FOOTER TITLE ▼▼▼ -->
         <h2>LET'S WORK.</h2>
+        <!-- ▲▲▲ END EDIT ▲▲▲ -->
         <div class="footer-links">
+            <!-- ▼▼▼ EMAIL BUTTON (mailto: = opens email app) ▼▼▼ -->
             <a href="mailto:twkao@ucdavis.edu" class="btn">twkao@ucdavis.edu</a>
-            <a href="https://www.instagram.com/tyk.films/" target="_blank" class="btn">INSTAGRAM</a>
+            <!-- ▲▲▲ END EDIT ▲▲▲ -->
+            <a href="https://www.instagram.com/tyk.films/" target="_blank" rel="noopener noreferrer" class="btn">INSTAGRAM</a>
         </div>
     </footer>
 
-    <script>
-        window.addEventListener("load", function() {
-            gsap.registerPlugin(ScrollTrigger);
-            let tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: "#main-sequence",
-                    start: "top top",
-                    end: "+=200%", 
-                    pin: true,
-                    scrub: 1,
-                    anticipatePin: 1
-                }
-            });
-
-            tl.to(".left-t", { xPercent: -130, opacity: 0 }, 0)
-              .to(".right-t", { xPercent: 130, opacity: 0 }, 0)
-              .to(".video-window", { 
-                width: "90vw", 
-                height: "55vw", 
-                maxWidth: "1100px", 
-                maxHeight: "600px",
-                duration: 2, 
-                ease: "none" 
-              }, 0)
-              .to(".hero-panel", { yPercent: -100, duration: 1 });
-        });
-    </script>
+    <!-- Hero scroll logic (loads after GSAP scripts in <head>) -->
+    <script src="js/hero-animation.js"></script>
 </body>
 </html>

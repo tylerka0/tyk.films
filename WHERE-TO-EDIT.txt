@@ -1,0 +1,57 @@
+================================================================================
+  TYK.FILMS — WHERE TO EDIT (READ THIS FIRST)
+================================================================================
+
+This site is a normal folder of files. You do NOT need to be a programmer.
+Use any text editor (VS Code, Notepad, TextEdit).
+
+--------------------------------------------------------------------------------
+  FILE MAP (what each file is for)
+--------------------------------------------------------------------------------
+
+  index.html
+    • All the WORDS visitors see (headlines, about text, email, etc.)
+    • Which PHOTOS and VIDEO file names to use
+    • The ORDER of sections (nav → hero → about → gallery → footer)
+
+  css/site.css
+    • COLORS, FONTS, SPACING, sizes
+    • How it looks on PHONES (scroll to the bottom — “MOBILE” section)
+
+  js/hero-animation.js
+    • The SCROLL animation on the first big screen (video grows, text moves)
+    • Only edit this if someone tells you the scroll effect is wrong
+
+  photo1.jpg, photo2.jpg, …
+    • Your gallery pictures (same folder as index.html)
+
+  your-video.mp4 (or whatever name you put in index.html)
+    • The hero video — put the file in the same folder as index.html
+    • If you rename the video, change the name in index.html too
+
+--------------------------------------------------------------------------------
+  QUICK TASKS
+--------------------------------------------------------------------------------
+
+  Change the Instagram link?
+    → index.html — search for “instagram.com”
+
+  Change email or “LET'S WORK” text?
+    → index.html — footer section
+
+  Change “SHOOT / WITH / INTENTION” words?
+    → index.html — hero section (big h1 tags)
+
+  Change a photo?
+    → Replace the .jpg file, OR change the “src=” in index.html gallery
+
+  Change background color of the whole site?
+    → css/site.css — search for “body {”
+
+  Change menu button style?
+    → css/site.css — search for “.btn”
+
+  Hero video won’t play?
+    → Make sure the .mp4 file exists and the name in index.html matches exactly
+
+================================================================================

@@ -1,0 +1,387 @@
+/*
+ * =============================================================================
+ *  SITE STYLES — css/site.css
+ * =============================================================================
+ *
+ *  WHAT THIS FILE IS:
+ *    All the LOOK of the site: colors, fonts, spacing, photo grid, phone layout.
+ *
+ *  HOW TO USE IT:
+ *    Search inside this file for a SECTION banner (big === lines).
+ *    Example: want whiter nav background? find “TOP MENU (NAV)” and edit there.
+ *
+ *  ORDER OF SECTIONS (top to bottom):
+ *    1) Page basics (reset, body)
+ *    2) Top menu (nav)
+ *    3) Hero + scroll area (#main-sequence)
+ *    4) About / bio boxes
+ *    5) Photo gallery grid
+ *    6) Footer
+ *    7) Phone/small tablet overrides (scroll to the bottom)
+ *
+ * =============================================================================
+ */
+
+
+/* -----------------------------------------------------------------------------
+ * 1 — PAGE BASICS (whole site defaults)
+ * -----------------------------------------------------------------------------
+ * Edit here: background color, default font, smooth scroll on in-page links.
+ * -------------------------------------------------------------------------- */
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none !important;
+}
+
+body {
+    /* ▼▼▼ Whole page background + text color ▼▼▼ */
+    background: #fff;
+    color: #000;
+    /* ▲▲▲ END EDIT ▲▲▲ */
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* -----------------------------------------------------------------------------
+ * 2 — TOP MENU (NAV BAR)
+ * -----------------------------------------------------------------------------
+ * Edit here: bar padding, blur, logo size, button borders.
+ * The actual LINKS and WORDS are in index.html — not here.
+ * -------------------------------------------------------------------------- */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: clamp(12px, 2.5vw, 30px) clamp(16px, 4vw, 50px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    z-index: 1000;
+    /* ▼▼▼ Nav bar background: last number = transparency (0.9 = slightly see-through) ▼▼▼ */
+    background: rgba(255, 255, 255, 0.9);
+    /* ▲▲▲ END EDIT ▲▲▲ */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* Wrapper around WORK / ABOUT / CONTACT */
+.nav-btns {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: clamp(6px, 1.5vw, 10px);
+}
+
+.logo {
+    font-weight: 900;
+    font-size: clamp(1rem, 2.8vw, 1.2rem);
+    color: #000;
+    flex-shrink: 0;
+}
+
+.btn {
+    color: #000;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 10px clamp(12px, 2.5vw, 20px);
+    border: 1.5px solid #000;
+    text-transform: uppercase;
+    transition: 0.3s;
+    background: white;
+}
+
+.btn:hover {
+    background: #000;
+    color: #fff;
+}
+
+
+/* -----------------------------------------------------------------------------
+ * 3 — SCROLL STORY WRAPPER + HERO (first big screen)
+ * -----------------------------------------------------------------------------
+ * #main-sequence = the pinned scroll “chapter” in the JavaScript file.
+ * Do NOT rename #main-sequence unless you also edit js/hero-animation.js
+ *
+ * .video-window = the box around the hero video.
+ *   Edit width/height HERE for the STARTING size (before scroll grows it).
+ * -------------------------------------------------------------------------- */
+
+#main-sequence {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+.panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-panel {
+    z-index: 10;
+    background: #fff;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    gap: clamp(10px, 2vw, 28px);
+    padding: 0 clamp(12px, 3vw, 32px);
+}
+
+.text-wrap {
+    flex: 0 1 auto;
+    min-width: 0;
+    z-index: 1;
+}
+
+.text-wrap h1 {
+    font-size: clamp(1.75rem, 8vw, 6rem);
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: clamp(-2px, -0.4vw, -4px);
+    color: #000;
+    white-space: nowrap;
+}
+
+/*
+ * HERO VIDEO FRAME (starting size — JavaScript grows this while you scroll)
+ * --------------------------------------------------------------------------
+ * Too skinny? Increase the middle numbers in clamp().
+ * Example: width clamp(128px, 20vw, 260px) = wider on big screens.
+ */
+.video-window {
+    width: clamp(128px, 16vw, 220px);
+    height: clamp(260px, 50vh, 460px);
+    margin: 0 clamp(8px, 2.5vw, 28px);
+    background: #000;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+    opacity: 1;
+    visibility: visible;
+}
+
+.video-window video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 1;
+}
+
+
+/* -----------------------------------------------------------------------------
+ * 4 — ABOUT SECTION (two text columns under the hero)
+ * -----------------------------------------------------------------------------
+ * Words are in index.html. Here: borders, padding, column layout on desktop.
+ * -------------------------------------------------------------------------- */
+
+.desc-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: min(100%, 1200px);
+    margin: 0 auto;
+    padding: 0 clamp(16px, 4vw, 24px);
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+}
+
+.box {
+    padding: clamp(28px, 6vw, 60px) clamp(20px, 4vw, 40px);
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    font-weight: 600;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+.border-l {
+    border-left: 2px solid #000;
+}
+
+
+/* -----------------------------------------------------------------------------
+ * 5 — PHOTO GALLERY (mosaic grid on desktop)
+ * -----------------------------------------------------------------------------
+ * Which photo goes where is controlled by:
+ *   • class names on each <div class="item v1"> in index.html (v1, h1, …)
+ *   • grid-template-areas below (must match those names)
+ *
+ * To swap two photos: easiest is swap src="photo3.jpg" etc. in index.html.
+ * To change the SHAPE of the mosaic: edit grid-template-areas (advanced).
+ * -------------------------------------------------------------------------- */
+
+.gallery-grid {
+    display: grid;
+    padding: clamp(10px, 2vw, 15px);
+    gap: clamp(10px, 2vw, 15px);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+        "v1 h1 h1 h1"
+        "v1 h1 h1 h1"
+        "h2 h2 h3 h3"
+        "v2 v3 v4 h4"
+        "v2 v3 v4 h4";
+    background: #fff;
+}
+
+.item {
+    overflow: hidden;
+    background: #000;
+    min-height: 40vh;
+}
+
+.item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.item:hover img {
+    transform: scale(1.05);
+}
+
+/* Each letter name must match the class on the gallery box in index.html */
+.v1 { grid-area: v1; }
+.h1 { grid-area: h1; }
+.h2 { grid-area: h2; }
+.h3 { grid-area: h3; }
+.v2 { grid-area: v2; }
+.v3 { grid-area: v3; }
+.v4 { grid-area: v4; }
+.h4 { grid-area: h4; }
+
+
+/* -----------------------------------------------------------------------------
+ * 6 — FOOTER (contact strip at bottom)
+ * -----------------------------------------------------------------------------
+ * Email + Instagram links live in index.html.
+ * -------------------------------------------------------------------------- */
+
+footer {
+    padding: clamp(48px, 12vw, 100px) clamp(16px, 4vw, 50px);
+    text-align: center;
+}
+
+footer h2 {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+}
+
+.footer-links {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(12px, 3vw, 20px);
+}
+
+
+/* -----------------------------------------------------------------------------
+ * 7 — PHONES & SMALL TABLETS (screen width 768px or less)
+ * -----------------------------------------------------------------------------
+ * Everything above = desktop-ish. This block OVERRIDES those rules on small screens.
+ * Tip: if something looks wrong only on your phone, search the class name
+ *       in this file — it might be changed here.
+ * -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+        padding: 14px 16px;
+        gap: 10px;
+    }
+
+    .nav-btns {
+        justify-content: center;
+        width: 100%;
+        max-width: 420px;
+    }
+
+    .btn {
+        flex: 1 1 auto;
+        min-width: 0;
+        text-align: center;
+        padding: 10px 14px;
+        font-size: 0.65rem;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        justify-content: center;
+        gap: clamp(12px, 3vh, 24px);
+        padding: clamp(100px, 24vw, 130px) 12px clamp(24px, 6vh, 48px);
+    }
+
+    .text-wrap h1 {
+        white-space: normal;
+        text-align: center;
+    }
+
+    .video-window {
+        width: min(200px, 70vw);
+        height: min(280px, 38vh);
+        margin: 0;
+    }
+
+    .desc-content {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .border-l {
+        border-left: none;
+        border-top: 2px solid #000;
+    }
+
+    .gallery-grid {
+        grid-template-areas: none;
+        grid-template-columns: 1fr;
+    }
+
+    .item {
+        grid-area: auto;
+        min-height: unset;
+        height: 50vh;
+    }
+
+    footer .btn {
+        word-break: break-word;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .footer-links .btn {
+        width: 100%;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
