@@ -29,7 +29,7 @@ nav {
 }
 .btn:hover { background: #000; color: #fff; }
 
-/* HERO SECTION */
+/* HERO SEQUENCE */
 #main-sequence { position: relative; height: 100vh; width: 100%; }
 .panel {
     position: absolute; top: 0; left: 0; width: 100%; height: 100vh;
@@ -47,13 +47,13 @@ nav {
     letter-spacing: -4px; color: #000; white-space: nowrap;
 }
 
-/* Starting Sliver Dimensions */
+/* Static Start State */
 .video-window {
     width: 160px; 
     height: 420px;
     margin: 0 40px; 
     background: #000;
-    overflow: hidden; 
+    overflow: hidden;
     position: relative;
     z-index: 2; 
     flex-shrink: 0;
@@ -65,34 +65,21 @@ nav {
     display: grid; grid-template-columns: 1fr 1fr;
     width: 85%; border-top: 2px solid #000; border-bottom: 2px solid #000;
 }
-.box { padding: 60px 40px; font-size: 1.1rem; font-weight: 600; line-height: 1.5; text-transform: uppercase; }
+.box { padding: 60px 40px; font-size: 1rem; font-weight: 600; line-height: 1.5; text-transform: uppercase; }
 .border-l { border-left: 2px solid #000; }
 
-/* EDITORIAL PHOTO GALLERY */
+/* BALANCED 8-PHOTO GRID */
 .gallery-wrapper {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
-    padding: 15px;
+    gap: 12px;
+    padding: 12px;
     background: #fff;
 }
 
 .photo-item {
-    flex: 1 1 calc(33.333% - 15px);
-    height: 40vh;
     overflow: hidden;
-}
-
-/* Feature 1: Profile Vertical */
-.photo-item:first-child {
-    flex: 1 1 35%;
-    height: 80vh;
-}
-
-/* Feature 2: Cinematic Horizontal */
-.photo-item:nth-child(2) {
-    flex: 1 1 60%;
-    height: 80vh;
+    background: #000;
 }
 
 .photo-item img {
@@ -105,19 +92,26 @@ nav {
 
 .photo-item:hover img { transform: scale(1.05); }
 
+/* Feature row: 1 Tall, 1 Wide */
+.feature-tall { flex: 1 1 35%; height: 80vh; }
+.feature-wide { flex: 1 1 60%; height: 80vh; }
+
+/* Standard Row: Perfect 50/50 split */
+.standard {
+    flex: 1 1 calc(50% - 12px);
+    height: 50vh;
+}
+
 /* FOOTER */
 footer { padding: 100px 50px; text-align: center; }
 .footer-links { margin-top: 30px; display: flex; justify-content: center; gap: 20px; }
 
-/* RESPONSIVE FIX */
+/* MOBILE */
 @media (max-width: 768px) {
     .hero-content { flex-direction: column; }
     .video-window { width: 50vw; height: 80vw; margin: 20px 0; }
     .text-wrap h1 { font-size: 14vw; }
-    .photo-item, .photo-item:first-child, .photo-item:nth-child(2) {
-        flex: 1 1 100%;
-        height: 50vh;
-    }
+    .feature-tall, .feature-wide, .standard { flex: 1 1 100%; height: 45vh; }
     .desc-content { grid-template-columns: 1fr; width: 90%; }
     .border-l { border-left: none; border-top: 2px solid #000; }
 }
